@@ -7,7 +7,7 @@ const params = new URLSearchParams(hash);
 
 const userName = params.get('tgWebAppPlatform');
 // const userPhone = window.Telegram.WebApp.user?.phone
-const userUsername = initDataRaw.
+// const userUsername = initDataRaw.
 // const userPrem = window.Telegram.WebApp.user?.is_premium
 document.querySelector('#app').innerHTML = `
   <div>    
