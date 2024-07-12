@@ -1,10 +1,14 @@
 import './style.css'
 import { setupCounter } from './counter.js'
+import { retrieveLaunchParams } from '@telegram-apps/sdk';
 
+const { initDataRaw, initData } = retrieveLaunchParams();
 
-const userName = window.Telegram.WebApp.user?.first_name
+console.log(initDataRaw, initData);
+
+const userName = initData?.user?.first_name
 const userPhone = window.Telegram.WebApp.user?.phone
-const userUsername = window.Telegram.WebApp.user?.username
+const userUsername = initDataRaw?.user?.username
 const userPrem = window.Telegram.WebApp.user?.is_premium
 document.querySelector('#app').innerHTML = `
   <div>    
@@ -22,5 +26,3 @@ document.querySelector('#app').innerHTML = `
   </div>
 `
 setupCounter(document.querySelector('#counter'))
-
-console.log(window.Telegram.WebApp)
