@@ -22,3 +22,5 @@ document.querySelector('#app').innerHTML = `
   </div>
 `
 setupCounter(document.querySelector('#counter'))
+
+console.log(window.Telegram.WebApp)
