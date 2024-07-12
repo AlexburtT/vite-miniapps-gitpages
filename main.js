@@ -13,7 +13,7 @@ document.querySelector('#app').innerHTML = `
   <div>    
     <h1>Hello ${userName || 'anonymous'}</h1>
     
-    <h2>Platform: ${userUsername || 'anonymous'}</h2>
+    <h2>Platform: ${userName || 'anonymous'}</h2>
     
     <h2>Telegram Web App</h2>
     <div class="card">
