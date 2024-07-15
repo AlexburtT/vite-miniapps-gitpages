@@ -11,7 +11,7 @@ console.log(initDataRaw);
 // const userName = params.get('tgWebAppPlatform');
 
 const userData = initDataString.platform;
-const userPhone = initDataRaw.phone;
+const userPhone = initDataRaw.user?.firstName;
 // const userPhone = window.Telegram.WebApp.user?.phone
 // const userUsername = initDataRaw.
 // const userPrem = window.Telegram.WebApp.user?.is_premium
