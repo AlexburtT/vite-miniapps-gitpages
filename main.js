@@ -1,19 +1,23 @@
 import './style.css'
 import { setupCounter } from './counter.js'
-import { retrieveLaunchParams } from '@telegram-apps/sdk';
+import { retrieveLaunchParams, parseInitData } from '@telegram-apps/sdk';
 
-const hash = window.location.hash.slice(1);
-const params = new URLSearchParams(hash);
+const initDataString = retrieveLaunchParams();
+const initDataRaw = parseInitData(initDataString);
 
-const userName = params.get('tgWebAppPlatform');
+console.log(initDataRaw);
 
-const userData = params.get('tgWebAppData.user.first_name');
+
+// const userName = params.get('tgWebAppPlatform');
+
+const userData = initDataString.platform;
+const userPhone = initDataRaw.phone;
 // const userPhone = window.Telegram.WebApp.user?.phone
 // const userUsername = initDataRaw.
 // const userPrem = window.Telegram.WebApp.user?.is_premium
 document.querySelector('#app').innerHTML = `
   <div>    
-    <h1>Hello ${userName || 'anonymous'}</h1>
+    <h1>Hello ${userPhone || 'anonymous'}</h1>
     
     <h2>Platform: ${userData || 'anonymous'}</h2>
     
