@@ -4,7 +4,7 @@ import { retrieveLaunchParams } from '@telegram-apps/sdk';
 
 const userData = retrieveLaunchParams();
 const userPhone = userData.version;
-const userUsername = userData.initData.user.username;
+const userUsername = userData.initData?.user.username || userData.initData?.user.usernameRaw || 'anonymous';
 
 
 document.querySelector('#app').innerHTML = `
