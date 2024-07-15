@@ -1,11 +1,11 @@
 import './style.css'
 import { setupCounter } from './counter.js'
-import { retrieveLaunchParams, parseInitData } from '@telegram-apps/sdk';
+import WebApp from '@twa-dev/sdk'
 
-const userData = retrieveLaunchParams();
-const userBio = parseInitData();
-const userPhone = userData.version;
-const userUsername = userBio.user.firstName || 'кто-то с горы';
+WebApp.ready();
+
+const userPhone = WebApp.WebAppUser.first_name;
+const userUsername = WebApp.platform;
 
 
 document.querySelector('#app').innerHTML = `
