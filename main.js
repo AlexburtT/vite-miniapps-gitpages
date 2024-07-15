@@ -4,9 +4,8 @@ import WebApp from '@twa-dev/sdk'
 
 WebApp.ready();
 
-const userPhone = WebApp.WebAppUser.first_name;
+const userPhone = WebApp.initDataUnsafe.user.first_name;
 const userUsername = WebApp.platform;
-
 
 document.querySelector('#app').innerHTML = `
   <div>    
@@ -19,7 +18,7 @@ document.querySelector('#app').innerHTML = `
       <button id="counter" type="button"></button>
     </div>
     <p class="read-the-docs">
-      Жмякни тут и получишь результат
+      Жмякни тут и получишь результат your <code>counter</code>
     </p>
   </div>
 `
