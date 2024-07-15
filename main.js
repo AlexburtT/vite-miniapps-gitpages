@@ -1,10 +1,11 @@
 import './style.css'
 import { setupCounter } from './counter.js'
-import { retrieveLaunchParams } from '@telegram-apps/sdk';
+import { retrieveLaunchParams, parseInitData } from '@telegram-apps/sdk';
 
 const userData = retrieveLaunchParams();
+const userBio = parseInitData();
 const userPhone = userData.version;
-const userUsername = userData.initData?.user.username || userData.initData?.user.usernameRaw || 'anonymous';
+const userUsername = userBio.user.firstName || 'кто-то с горы';
 
 
 document.querySelector('#app').innerHTML = `
