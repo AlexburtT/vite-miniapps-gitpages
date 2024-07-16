@@ -6,13 +6,14 @@ WebApp.ready();
 
 
 function setupCounter(element) {
-  const getCounter = () => {
-    return WebApp.CloudStorage.getItem('counter', (error, value) => (error ? 0 : value)) || 0
-  };
-  const setCounter = (count) => {
-    WebApp.CloudStorage.setItem('counter', count);
-  };
-  element.addEventListener('click', () => setCounter(getCounter() + 1));
+  let setCounterTg = WebApp.CloudStorage.setItem('counter', 0);
+  const setCounter = () => {
+    count = WebApp.CloudStorage.get('counter') || count;
+    element.innerHTML = `count is ${count}`;
+  };  
+
+  element.addEventListener('click', () => setCounter(setCounterTg + 1));
+  setCounter();
   };
 
 const userFirstName = WebApp.initDataUnsafe.user.first_name;
