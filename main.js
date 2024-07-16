@@ -1,3 +1,4 @@
+import { error } from 'console';
 import './style.css'
 import WebApp from '@twa-dev/sdk'
 
@@ -6,14 +7,13 @@ WebApp.ready();
 
 function setupCounter(element) {
   const getCounter = () => {
-    return WebApp.CloudStorage.getItem('counter') || 0
+    return WebApp.CloudStorage.getItem('counter', (error, value) => (error ? 0 : value)) || 0
   };
   const setCounter = (count) => {
     WebApp.CloudStorage.setItem('counter', count);
   };
   element.addEventListener('click', () => setCounter(getCounter() + 1));
-  setCounter(getCounter());
-};
+  };
 
 const userFirstName = WebApp.initDataUnsafe.user.first_name;
 const userLastName = WebApp.initDataUnsafe.user.last_name;
