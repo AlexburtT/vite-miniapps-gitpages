@@ -5,14 +5,23 @@ WebApp.ready();
 
 
 function setupCounter(element) {
-  let setCounterTg = WebApp.CloudStorage.setItem('counter', 0);
-  const setCounter = () => {
-    count = WebApp.CloudStorage.getItem('counter') || count;
-    element.innerHTML = `count is ${count}`;
-  };  
+  let counter = Number(WebApp.CloudStorage.getItem('counter'));
+  // if (counter) {
+  //   element.innerHTML = `count is ${counter}`;
+  // } else {
+  //   WebApp.CloudStorage.setItem('counter', 0);
+  //   element.innerHTML = `count is 0`;
+  // }
 
-  element.addEventListener('click', () => setCounter(setCounterTg + 1));
-  setCounter();
+  // const setCounter = (count) => {
+  //   WebApp.CloudStorage.setItem('counter', count);
+  //   element.innerHTML = `count is ${count}`;
+  // }; 
+  
+
+  // element.addEventListener('click', () => setCounter(counter + 1));
+  // setCounter();
+  console.log(counter);
   };
 
 const userFirstName = WebApp.initDataUnsafe.user.first_name;
@@ -24,8 +33,6 @@ const userLanguageCode = WebApp.initDataUnsafe.user.language_code;
 const userIsPremium = WebApp.initDataUnsafe.user.is_premium;
 const userPhoto = WebApp.initDataUnsafe.user.photo;
 const userPlatform = WebApp.platform;
-
-console.log(WebApp);
 
 document.querySelector('#app').innerHTML = `
   <div>    
