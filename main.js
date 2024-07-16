@@ -1,4 +1,3 @@
-import { error } from 'console';
 import './style.css'
 import WebApp from '@twa-dev/sdk'
 
