@@ -1,8 +1,19 @@
 import './style.css'
-import { setupCounter } from './counter.js'
 import WebApp from '@twa-dev/sdk'
 
 WebApp.ready();
+
+
+function setupCounter(element) {
+  const getCounter = () => {
+    return WebApp.CloudStorage.get('counter') || 0
+  };
+  const setCounter = (count) => {
+    WebApp.CloudStorage.set('counter', count);
+  };
+  element.addEventListener('click', () => setCounter(getCounter() + 1));
+  setCounter(getCounter());
+};
 
 const userFirstName = WebApp.initDataUnsafe.user.first_name;
 const userLastName = WebApp.initDataUnsafe.user.last_name;
