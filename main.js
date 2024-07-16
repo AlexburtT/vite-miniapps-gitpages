@@ -6,10 +6,10 @@ WebApp.ready();
 
 function setupCounter(element) {
   const getCounter = () => {
-    return WebApp.CloudStorage.get('counter') || 0
+    return WebApp.CloudStorage.getItem('counter') || 0
   };
   const setCounter = (count) => {
-    WebApp.CloudStorage.set('counter', count);
+    WebApp.CloudStorage.setItem('counter', count);
   };
   element.addEventListener('click', () => setCounter(getCounter() + 1));
   setCounter(getCounter());
