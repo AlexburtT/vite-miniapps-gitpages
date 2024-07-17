@@ -3,26 +3,9 @@ import WebApp from '@twa-dev/sdk'
 
 WebApp.ready();
 
+console.log('Просто клауд', WebApp.CloudStorage);
+console.log('Объекты', WebApp.CloudStorage.getItems());
 
-function setupCounter(element) {
-  const counter = WebApp.CloudStorage.getItem('counter');
-  // if (counter) {
-  //   element.innerHTML = `count is ${counter}`;
-  // } else {
-  //   WebApp.CloudStorage.setItem('counter', 0);
-  //   element.innerHTML = `count is 0`;
-  // }
-
-  // const setCounter = (count) => {
-  //   WebApp.CloudStorage.setItem('counter', count);
-  //   element.innerHTML = `count is ${count}`;
-  // }; 
-  
-
-  // element.addEventListener('click', () => setCounter(counter + 1));
-  // setCounter();
-  console.log(counter);
-  };
 
 const userFirstName = WebApp.initDataUnsafe.user.first_name;
 const userLastName = WebApp.initDataUnsafe.user.last_name;
