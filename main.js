@@ -3,8 +3,12 @@ import WebApp from '@twa-dev/sdk'
 
 WebApp.ready();
 
-console.log('Просто клауд', WebApp.CloudStorage);
-console.log('Объекты', WebApp.CloudStorage.getItems());
+const setNumber = WebApp.CloudStorage.setItem('number', 99_000_000);
+
+const getNumber = WebApp.CloudStorage.getItem('number');
+
+console.log('GetNumber', getNumber);
+console.log('SetNumber', setNumber);
 
 
 const userFirstName = WebApp.initDataUnsafe.user.first_name;
