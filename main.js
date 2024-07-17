@@ -1,15 +1,14 @@
 import './style.css'
 import WebApp from '@twa-dev/sdk'
+import { getItem, setItem } from './counter';
 
 WebApp.ready();
 
-WebApp.CloudStorage.setItem('number', 99_000_000).then(() => {
-  console.log('SetNumber', result);
-});
+let setNumber = setItem('number', 99_000_000);
 
-WebApp.CloudStorage.getItem('number').then((result) => {
-  console.log('GetNumber', result);
-});
+let getNumber = getItem('number');
+
+console.log(setNumber, getNumber);
 
 
 
