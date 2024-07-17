@@ -3,12 +3,16 @@ import WebApp from '@twa-dev/sdk'
 
 WebApp.ready();
 
-const setNumber = WebApp.CloudStorage.setItem('number', 99_000_000);
+const setNumber = WebApp.CloudStorage.setItem('number', 99_000_000).then(() => {
+  console.log('SetNumber', result);
+});
 
-const getNumber = WebApp.CloudStorage.getItem('number');
+const getNumber = WebApp.CloudStorage.getItem('number').then((result) => {
+  console.log('GetNumber', result);
+});
 
-console.log('GetNumber', getNumber);
-console.log('SetNumber', setNumber);
+setNumber;
+getNumber;
 
 
 const userFirstName = WebApp.initDataUnsafe.user.first_name;
