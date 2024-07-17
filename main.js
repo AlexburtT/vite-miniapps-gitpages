@@ -5,7 +5,7 @@ WebApp.ready();
 
 
 function setupCounter(element) {
-  let counter = Number(WebApp.CloudStorage.getItem('counter'));
+  const counter = Number(WebApp.CloudStorage.getItem('counter'));
   // if (counter) {
   //   element.innerHTML = `count is ${counter}`;
   // } else {
