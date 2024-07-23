@@ -7,10 +7,10 @@ if (WebApp.platform === "android" || WebApp.platform === "ios" || WebApp.platfor
 
  const nameUser = WebApp.initDataUnsafe.user?.first_name;
 
-//  Дата регистрации в боте
-const userDateRegister: number = parseInt(WebApp.initDataUnsafe.auth_date.toLocaleString());
+//  Время открытия приложения
+const userDateLogin: number = parseInt(WebApp.initDataUnsafe.auth_date.toLocaleString());
 
-let convertDate = new Date(userDateRegister * 1000);
+let convertDate = new Date(userDateLogin * 1000);
 let year = convertDate.getFullYear();
 let months = convertDate.getMonth() + 1;
 let dates = convertDate.getDate();
@@ -22,14 +22,18 @@ let time = `${year}-${months}-${dates} ${hours}:${minutes}:${seconds}`;
 // С какой платформы пользователь зашёл
 const platformUser = WebApp.platform;
 
+// Фото, аватар пользователя
+const userPhoto = WebApp.initDataUnsafe.user?.photo_url;
+
 
 let app = document.getElementById("tgWebMiniApps");
 
 app!.innerHTML = `
     <div>
+        <img src="${userPhoto}" alt="Аватар пользователя" width="100px">
         <h1>Привет, <span>${nameUser || "путник"}!</span></h1>
-        <p>Ты зарегистрировался в боте ${time}</p>
-        <p>Ты зашел c платформы ${platformUser}</p>
+        <p>Дата запуска приложения: ${time}</p>
+        <p>Ты зашел c платформы: ${platformUser}</p>
     </div>
 `;
 
