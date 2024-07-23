@@ -7,11 +7,15 @@ const nameUser = WebApp.initDataUnsafe.user?.first_name;
 const userDateRegister: number = parseInt(WebApp.initDataUnsafe.auth_date.toLocaleString());
 
 let convertDate = new Date(userDateRegister * 1000);
-let utcString = convertDate.toUTCString();
-let time = utcString.slice(17, 25);
-let date = utcString.slice(0, 16);
-let timeDate = `${date} ${time}`;
+let year = convertDate.getFullYear();
+let months = convertDate.getMonth() + 1;
+let dates = convertDate.getDate();
+let hours = convertDate.getHours();
+let minutes = convertDate.getMinutes();
+let seconds = convertDate.getSeconds();
+let time = `${year}-${months}-${dates} ${hours}:${minutes}:${seconds}`;
 
-console.log(`Пользователь ${nameUser} зарегистрировался ${timeDate}`);
+
+console.log(`Пользователь ${nameUser} зарегистрировался ${time}`);
 
 document.querySelector("h1")!.innerHTML = `Привет, ${nameUser || "путник"}!`;
