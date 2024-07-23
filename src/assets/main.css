@@ -30,3 +30,7 @@ body {
     height: 100vh;
     overflow: hidden;    
 }
+
+span {
+    color: var(--tg-theme-accent-text-color);
+}
