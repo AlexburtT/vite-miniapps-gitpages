@@ -32,15 +32,15 @@ app!.innerHTML = `
         <p>Ты зашел c платформы ${platformUser}</p>
     </div>
 `;
-}
-
-let app = document.getElementById("tgWebMiniApps");
-
-app!.innerHTML = `
-    <div>
-        <h1>Привет, <span>Путник!</span></h1>        
-    </div>
-`;
 
 console.log(WebApp.initData, WebApp.initDataUnsafe);
 
+} else {
+    let app = document.getElementById("tgWebMiniApps");
+
+    app!.innerHTML = `
+        <div>
+            <h1>Привет, <span>Путник!</span></h1>        
+        </div>
+    `;
+}
