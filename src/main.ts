@@ -24,6 +24,26 @@ const platformUser = WebApp.platform;
 
 // Фото, аватар пользователя
 const userPhoto = WebApp.initDataUnsafe.user?.photo_url;
+console.log(userPhoto);
+
+//Кнопка закрытия
+WebApp.enableClosingConfirmation = () => {
+
+   WebApp.showPopup({
+    title: "Подтвердите закрытие",
+    message: "Вы уверены, что хотите закрыть приложение?",
+    buttons: [
+      {
+        text: "Нет",
+        type: "destructive",
+      },
+      {
+        text: "Да",
+        type: "default",
+      },
+    ]
+})
+};
 
 
 let app = document.getElementById("tgWebMiniApps");
