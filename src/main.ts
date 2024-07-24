@@ -21,6 +21,12 @@ const isBot = WebApp.initDataUnsafe.user?.is_bot;
 const isAllowsWriteToPm = WebApp.initDataUnsafe.user?.allows_write_to_pm;
 // Фото, аватар пользователя возвращается только если бот добавлен в меню приложений (доступно для крупных рекламодателей)
 // const userPhoto = WebApp.initDataUnsafe.user?.photo_url;
+
+// Данные чата
+const chatID = WebApp.initDataUnsafe.chat?.id;
+const chatTitle = WebApp.initDataUnsafe.chat?.title;
+const chatType = WebApp.initDataUnsafe.chat?.type;
+const chatUserName = WebApp.initDataUnsafe.chat?.username;
  // С какой платформы пользователь зашёл
 const platformUser = WebApp.platform;
 
@@ -52,7 +58,12 @@ app!.innerHTML = `
         <p>Дата и время входа в приложения: ${time}</p>
         <p>Ты зашел c платформы: ${platformUser}</p>
         
-        
+        <br>
+        <h1>Данные чата</h1>
+        <p>Твой ID чата: ${chatID}</p>
+        <p>Твой название чата: ${chatTitle}</p>
+        <p>Твой тип чата: ${chatType}</p>
+        <p>Твой юзернейм чата: ${chatUserName}</p>        
     </div>
 `;
 
