@@ -47,8 +47,8 @@ if (
     if (resultMy === null) {
       return "Нет данных";
     } else {
-        return resultMy;
         console.log("Значение: ", resultMy);
+        return resultMy;        
     }
   });
 
@@ -56,7 +56,7 @@ if (
     console.log("Все значения: ", result);
   });
 
-  console.log("Хранилище: ", storage, "Значение: ", value);
+ 
 
   //  Время открытия приложения
   const userDateLogin: number = parseInt(
