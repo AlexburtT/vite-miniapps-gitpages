@@ -26,8 +26,9 @@ const isAllowsWriteToPm = WebApp.initDataUnsafe.user?.allows_write_to_pm;
 // Только через меню приложений
 // const chatID = WebApp.initDataUnsafe.chat?.id;
 // const chatTitle = WebApp.initDataUnsafe.chat?.title; 
+// const chatUserName = WebApp.initDataUnsafe.chat?.username;
 const chatType = WebApp.initDataUnsafe.chat_type;
-const chatUserName = WebApp.initDataUnsafe.chat?.username;
+
  // С какой платформы пользователь зашёл
 const platformUser = WebApp.platform;
 
@@ -70,7 +71,7 @@ app!.innerHTML = `
         <br>
         <h1>Данные чата</h1>
         <p>Твой тип чата: ${chatType}</p>
-        <p>Твой юзернейм чата: ${chatUserName}</p>    
+  
         
         <br>
         <h1>Хранилище</h1>
