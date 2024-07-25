@@ -43,12 +43,17 @@ if (
     console.log("Сохранено");
   });
   // Чтение данных из хранилища
-  const value = storage.getItem("key", (result) => {
-    if (result === null) {
+  const value = storage.getItem("key", (resultMy) => {
+    if (resultMy === null) {
       return "Нет данных";
     } else {
-        return result;
+        return resultMy;
+        console.log("Значение: ", resultMy);
     }
+  });
+
+  const allItems = storage.getItems(["key", ""], (result) => {
+    console.log("Все значения: ", result);
   });
 
   console.log("Хранилище: ", storage, "Значение: ", value);
