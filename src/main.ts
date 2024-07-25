@@ -39,6 +39,7 @@ const storage = WebApp.CloudStorage;
 storage.setItem("key", "Hello World!");
 // Чтение данных из хранилища
 const value = storage.getItem("key");
+console.log("Хранилище: ", storage, "Значение: ", value);
 
 //  Время открытия приложения
 const userDateLogin: number = parseInt(WebApp.initDataUnsafe.auth_date.toLocaleString());
