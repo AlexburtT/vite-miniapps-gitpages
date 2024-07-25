@@ -23,12 +23,21 @@ const isAllowsWriteToPm = WebApp.initDataUnsafe.user?.allows_write_to_pm;
 // const userPhoto = WebApp.initDataUnsafe.user?.photo_url;
 
 // Данные чата
-const chatID = WebApp.initDataUnsafe.chat?.id;
-const chatTitle = WebApp.initDataUnsafe.chat?.title;
-const chatType = WebApp.initDataUnsafe.chat?.type;
+// Только через меню приложений
+// const chatID = WebApp.initDataUnsafe.chat?.id;
+// const chatTitle = WebApp.initDataUnsafe.chat?.title; 
+const chatType = WebApp.initDataUnsafe.chat_type;
 const chatUserName = WebApp.initDataUnsafe.chat?.username;
  // С какой платформы пользователь зашёл
 const platformUser = WebApp.platform;
+
+
+// Облачное хранилище (ключ, значение)
+const storage = WebApp.CloudStorage;
+// Сохранение данных в хранилище
+storage.setItem("key", "Hello World!");
+// Чтение данных из хранилища
+const value = storage.getItem("key");
 
 //  Время открытия приложения
 const userDateLogin: number = parseInt(WebApp.initDataUnsafe.auth_date.toLocaleString());
@@ -60,10 +69,12 @@ app!.innerHTML = `
         
         <br>
         <h1>Данные чата</h1>
-        <p>Твой ID чата: ${chatID}</p>
-        <p>Твой название чата: ${chatTitle}</p>
         <p>Твой тип чата: ${chatType}</p>
-        <p>Твой юзернейм чата: ${chatUserName}</p>        
+        <p>Твой юзернейм чата: ${chatUserName}</p>    
+        
+        <br>
+        <h1>Хранилище</h1>
+        <p>Значение хранилища: ${value}</p>
     </div>
 `;
 
