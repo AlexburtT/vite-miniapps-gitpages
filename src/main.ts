@@ -58,6 +58,8 @@ if (
     }
   });  
 
+  console.log(getItem);
+
   //  Время открытия приложения
   const userDateLogin: number = parseInt(
     WebApp.initDataUnsafe.auth_date.toLocaleString()
