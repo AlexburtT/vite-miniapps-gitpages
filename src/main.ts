@@ -60,7 +60,7 @@ if (
     });
   }); 
 
-  const rezultStorage = await getItem(item, defaultValueStorage);
+  const rezultStorage = getItem(item, defaultValueStorage);
 
   //  Время открытия приложения
   const userDateLogin: number = parseInt(
