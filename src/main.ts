@@ -1,6 +1,7 @@
 import WebApp from "@twa-dev/sdk";
 import "./assets/main.css";
-import { clearLocalStorage, getLocalStorage, removeLocalStorage, setLocalStorage } from "./assets/localStorage";
+import { clearLocalStorage, getLocalStorage, removeLocalStorage, setLocalStorage } from "./storage/localStorage";
+import { setCloudStorage, getCloudStorage } from "./storage/tgCloudStorage";
 
 WebApp.ready();
 
@@ -38,27 +39,14 @@ if (
   const platformUser = WebApp.platform;
 
   // Облачное хранилище (ключ, значение)
-  const storage = WebApp.CloudStorage;
-
-  const itemKey: string = "10b";
-  const defaultValueStorage: string = "Я значение по умолчанию";
-  let valueStorage: string = "Значение из хранилища";
-
   // Сохранение данных в хранилище
-  storage.setItem(itemKey, valueStorage, () => {
-    console.log("Сохранено");
-    console.log("Значение из SetMetoda: ", valueStorage);
-  });
-  // Чтение данных из хранилища
-  const getItemValue = () => storage.getItem(itemKey, ((_, value) => {
-    if (value === null) {
-      value = defaultValueStorage;
-    } 
-    return value;
-  }));
-   
+  setCloudStorage("10b", "Я значение в хранилище");
 
-  console.log("Это сам getItem: ", getItemValue);
+  // Чтение данных из хранилища
+  let rezultTgCloudStorage = getCloudStorage("10b", "Я значение по умолчанию");
+   
+  console.log("Это сам getCloudStorage: ", rezultTgCloudStorage);
+
 
   //  Время открытия приложения
   const userDateLogin: number = parseInt(
@@ -108,13 +96,13 @@ if (
         
         <br>
         <h1>Хранилище</h1>
-        <p>Значение хранилища: ${getItemValue}</p>
+        <p>Значение хранилища: ${rezultTgCloudStorage}</p>
     </div>
 `;
 } else {
     // Данные для сайта без платформы
-  setLocalStorage("key", "Я значение по умолчанию");
-  const valueLocalStorage = getLocalStorage("key");
+  setLocalStorage("ключ", "Я значение по умолчанию");
+  const valueLocalStorage = getLocalStorage("ключ");
   console.log("Это сам getLocalStorage: ", valueLocalStorage);
 
   let app = document.getElementById("tgWebMiniApps");
