@@ -10,7 +10,7 @@ export const setCloudStorage = (key: string, value: string) => {
 };
 
 export const getCloudStorage = (key: string, defaultValue: string) =>
-  new Promise((resolve) => {
+  new Promise<string>((resolve) => {
     WebApp.CloudStorage.getItem(key, (value) => {
       if (value === null) {
         resolve(defaultValue);
@@ -18,6 +18,4 @@ export const getCloudStorage = (key: string, defaultValue: string) =>
         resolve(value);
       }
     });
-  }).then((value) => {
-    return value;
   });
