@@ -49,15 +49,16 @@ if (
     console.log("Значение из SetMetoda: ", valueStorage);
   });
   // Чтение данных из хранилища
-  const getItem = async () => {
-    try {
-      const value = storage.getItem(itemKey);
-      console.log("Значение из GetMetoda: ", value);
-    } catch (error) {
-      console.log(error);
-      valueStorage = defaultValueStorage;
-    }    
-  }
+  const getItem = storage.getItem(itemKey, (value) => {
+    console.log("Значение из GetMetoda: ", value);
+
+    if (!value) {
+      value = defaultValueStorage;
+    } else {
+      valueStorage = value;
+    }
+    return value;
+  })
    
 
   console.log("Это сам getItem: ", getItem);
