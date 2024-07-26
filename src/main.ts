@@ -43,7 +43,9 @@ if (
   setCloudStorage("10b", "Я значение в хранилище");
 
   // Чтение данных из хранилища
-  let rezultTgCloudStorage = getCloudStorage("10b", "Я значение по умолчанию");
+  let rezultTgCloudStorage = getCloudStorage("10b", "Я значение по умолчанию").then((value) => {
+    return value;
+  });
    
   console.log("Это сам getCloudStorage: ", rezultTgCloudStorage);
 
