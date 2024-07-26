@@ -38,25 +38,27 @@ if (
 
   // Облачное хранилище (ключ, значение)
   const storage = WebApp.CloudStorage;
+
+  const item: string = "key";
+  const defaultValueStorage: string = "Я значение по умолчанию";
+  let valueStorage = "Значение из хранилища";
+
   // Сохранение данных в хранилище
-  storage.setItem("key", "Hello World!", () => {
+  storage.setItem(item, valueStorage, () => {
     console.log("Сохранено");
+    console.log("Значение: ", valueStorage);
   });
   // Чтение данных из хранилища
-  const value = storage.getItem("key", (resultMy) => {
-    if (resultMy === null) {
-      return "Нет данных";
-    } else {
-        console.log("Значение: ", resultMy);
-        return resultMy;        
-    }
-  });
-
-  const allItems = storage.getItems(["key", ""], (result) => {
-    console.log("Все значения: ", result);
-  });
-
- 
+  const getItem = (item: string, defaultValueStorage: string) => new Promise((resolve) => {
+    storage.getItem(item, (valueStorage) => {
+      if (valueStorage === null) {
+        resolve(defaultValueStorage);
+      } else {
+        resolve(valueStorage);
+        console.log("Значение из GetMetoda: ", valueStorage);
+      }
+    });
+  }); 
 
   //  Время открытия приложения
   const userDateLogin: number = parseInt(
@@ -106,7 +108,7 @@ if (
         
         <br>
         <h1>Хранилище</h1>
-        <p>Значение хранилища: ${value}</p>
+        <p>Значение хранилища: ${getItem(item, defaultValueStorage)}</p>
     </div>
 `;
 } else {
