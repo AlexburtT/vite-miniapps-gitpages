@@ -44,7 +44,8 @@ if (
 
   // Чтение данных из хранилища
   let rezultTgCloudStorage = getCloudStorage("10b", "Я значение по умолчанию").then((value) => {
-    return value;
+    console.log("Из Промиса getCloudStorage: ", value);
+    value;
   });
    
   console.log("Это сам getCloudStorage: ", rezultTgCloudStorage);
