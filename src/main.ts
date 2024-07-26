@@ -49,15 +49,14 @@ if (
     console.log("Значение из SetMetoda: ", valueStorage);
   });
   // Чтение данных из хранилища
-  const getItem = storage.getItem(itemKey, () => {
-    console.log("Значение из GetMetoda: ", valueStorage);
-    if (!valueStorage) {
-      valueStorage = defaultValueStorage;
+  const getItem = storage.getItem(itemKey, (_, value) => {
+      if (!value) {
+      value = defaultValueStorage;
     } else {
-      valueStorage;
+      console.log("Значение из GetMetoda: ", value);
+      return value;
     }
-  });
- 
+  });  
 
   //  Время открытия приложения
   const userDateLogin: number = parseInt(
