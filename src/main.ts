@@ -46,7 +46,7 @@ if (
   // Сохранение данных в хранилище
   storage.setItem(item, valueStorage, () => {
     console.log("Сохранено");
-    console.log("Значение: ", valueStorage);
+    console.log("Значение из SetMetoda: ", valueStorage);
   });
   // Чтение данных из хранилища
   const getItem = (item: string, defaultValueStorage: string) => new Promise((resolve) => {
@@ -54,11 +54,13 @@ if (
       if (valueStorage === null) {
         resolve(defaultValueStorage);
       } else {
-        resolve(valueStorage);
         console.log("Значение из GetMetoda: ", valueStorage);
+        resolve(valueStorage);        
       }
     });
   }); 
+
+  const rezultStorage = await getItem(item, defaultValueStorage);
 
   //  Время открытия приложения
   const userDateLogin: number = parseInt(
@@ -108,7 +110,7 @@ if (
         
         <br>
         <h1>Хранилище</h1>
-        <p>Значение хранилища: ${getItem(item, defaultValueStorage)}</p>
+        <p>Значение хранилища: ${rezultStorage}</p>
     </div>
 `;
 } else {
