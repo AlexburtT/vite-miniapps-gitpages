@@ -50,19 +50,15 @@ if (
     console.log("Значение из SetMetoda: ", valueStorage);
   });
   // Чтение данных из хранилища
-  const getItem = storage.getItem(itemKey, (value) => {
-    console.log("Значение из GetMetoda: ", value);
-
+  const getItemValue = () => storage.getItem(itemKey, ((_, value) => {
     if (value === null) {
       value = defaultValueStorage;
-    } else {
-      valueStorage = value;
-    }
+    } 
     return value;
-  })
+  }));
    
 
-  console.log("Это сам getItem: ", getItem);
+  console.log("Это сам getItem: ", getItemValue);
 
   //  Время открытия приложения
   const userDateLogin: number = parseInt(
