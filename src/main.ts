@@ -52,7 +52,7 @@ if (
   const getItem = storage.getItem(itemKey, (value) => {
     console.log("Значение из GetMetoda: ", value);
 
-    if (!value) {
+    if (value === null) {
       value = defaultValueStorage;
     } else {
       valueStorage = value;
