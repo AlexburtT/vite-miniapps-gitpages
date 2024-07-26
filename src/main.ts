@@ -1,5 +1,6 @@
 import WebApp from "@twa-dev/sdk";
 import "./assets/main.css";
+import { clearLocalStorage, getLocalStorage, removeLocalStorage, setLocalStorage } from "./assets/localStorage";
 
 WebApp.ready();
 
@@ -39,7 +40,7 @@ if (
   // Облачное хранилище (ключ, значение)
   const storage = WebApp.CloudStorage;
 
-  const itemKey: string = "key";
+  const itemKey: string = "10b";
   const defaultValueStorage: string = "Я значение по умолчанию";
   let valueStorage: string = "Значение из хранилища";
 
@@ -52,7 +53,7 @@ if (
   const getItem = storage.getItem(itemKey, (value) => {
     console.log("Значение из GetMetoda: ", value);
 
-    if (!value) {
+    if (value === null) {
       value = defaultValueStorage;
     } else {
       valueStorage = value;
@@ -115,12 +116,18 @@ if (
     </div>
 `;
 } else {
+    // Данные для сайта без платформы
+  setLocalStorage("key", "Я значение по умолчанию");
+  const valueLocalStorage = getLocalStorage("key");
+  console.log("Это сам getLocalStorage: ", valueLocalStorage);
+
   let app = document.getElementById("tgWebMiniApps");
 
   app!.innerHTML = `
         <div>
             <h1>Привет, <span>Путник!</span></h1>       
             <p>Ты зашёл на сайт без платформы Telegram, необходимо зайти из <a href="https://t.me/Vitestjs_bot/TgWebMiniApps">Telegram</a></p> 
+            <p>Значение хранилища: ${valueLocalStorage}</p>
         </div>
     `;
 }
