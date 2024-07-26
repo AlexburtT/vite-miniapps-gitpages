@@ -43,12 +43,9 @@ if (
   setCloudStorage("10b", "Я значение в хранилище");
 
   // Чтение данных из хранилища
-  let rezultTgCloudStorage = getCloudStorage("10b", "Я значение по умолчанию").then((value) => {
-    console.log("Из Промиса getCloudStorage: ", value);
-    return value;
-  });
+  const rezultTgCloudStorage = getCloudStorage("10b", "Я значение по умолчанию");
    
-  console.log("Это сам getCloudStorage: ", rezultTgCloudStorage.then((value) => value));
+  console.log("Это сам getCloudStorage: ", rezultTgCloudStorage);
 
 
   //  Время открытия приложения

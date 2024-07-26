@@ -18,4 +18,6 @@ export const getCloudStorage = (key: string, defaultValue: string) =>
         resolve(value);
       }
     });
+  }).then((value) => {
+    return value;
   });
