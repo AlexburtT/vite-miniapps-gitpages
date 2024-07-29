@@ -48,10 +48,7 @@ if (
   setCloudStorage("10b", "Я значение в хранилище");
 
   // Чтение данных из хранилища
-  const rezultTgCloudStorage = getCloudStorage(
-    "10b",
-    "Я значение по умолчанию"
-  ).then((value) => {
+  const rezultTgCloudStorage = getCloudStorage("10b").then((value) => {
     const appStorageEl = document.getElementsByClassName(
       "tgWebMiniApps__storage"
     );
