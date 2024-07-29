@@ -1,6 +1,11 @@
 import WebApp from "@twa-dev/sdk";
 import "./assets/main.css";
-import { clearLocalStorage, getLocalStorage, removeLocalStorage, setLocalStorage } from "./storage/localStorage";
+import {
+  clearLocalStorage,
+  getLocalStorage,
+  removeLocalStorage,
+  setLocalStorage,
+} from "./storage/localStorage";
 import { setCloudStorage, getCloudStorage } from "./storage/tgCloudStorage";
 
 WebApp.ready();
@@ -43,10 +48,18 @@ if (
   setCloudStorage("10b", "Я значение в хранилище");
 
   // Чтение данных из хранилища
-  const rezultTgCloudStorage = getCloudStorage("10b", "Я значение по умолчанию").then((value) => value);
-   
-  console.log("Это сам getCloudStorage: ", rezultTgCloudStorage);
-
+  const rezultTgCloudStorage = getCloudStorage(
+    "10b",
+    "Я значение по умолчанию"
+  ).then((value) => {
+    const appStorageEl = document.getElementsByClassName(
+      "tgWebMiniApps__storage"
+    );
+    appStorageEl[0].innerHTML = `
+    <h1>Хранилище</h1>
+    <p>Значение: <span>${value}</span></p>
+    `;
+  });
 
   //  Время открытия приложения
   const userDateLogin: number = parseInt(
@@ -95,12 +108,11 @@ if (
   
         
         <br>
-        <h1>Хранилище</h1>
-        <p>Значение хранилища: ${rezultTgCloudStorage}</p>
+        <div class="tgWebMiniApps__storage"></div>
     </div>
 `;
 } else {
-    // Данные для сайта без платформы
+  // Данные для сайта без платформы
   setLocalStorage("ключ", "Я значение по умолчанию");
   const valueLocalStorage = getLocalStorage("ключ");
   console.log("Это сам getLocalStorage: ", valueLocalStorage);
