@@ -113,8 +113,9 @@ if (
 } else {
   // Данные для сайта без платформы
   setLocalStorage("ключ", "Я значение по умолчанию");
-  const valueLocalStorage = getLocalStorage("ключ");
-  console.log("Это сам getLocalStorage: ", valueLocalStorage);
+  let valueLocalStorage = setTimeout(() => getLocalStorage("ключ"), 1000); 
+  
+  console.log("Глобал значение ", valueLocalStorage);
 
   let app = document.getElementById("tgWebMiniApps");
 
