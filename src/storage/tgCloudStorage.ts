@@ -9,11 +9,11 @@ export const setCloudStorage = (key: string, value: string) => {
   });
 };
 
-export const getCloudStorage = (key: string, defaultValue: string) =>
-  new Promise<string>((resolve) => {
+export const getCloudStorage = (key: string) =>
+  new Promise<string>((resolve, reject) => {
     WebApp.CloudStorage.getItem(key, (value) => {
       if (value === null) {
-        resolve(defaultValue);
+        reject("Данные не получены");
       } else {
         resolve(value);
       }
