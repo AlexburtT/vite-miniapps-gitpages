@@ -5,7 +5,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.3.4"
+    "vite": "^5.3.6"
   },
   "dependencies": {
     "@twa-dev/sdk": "^7.0.0"
